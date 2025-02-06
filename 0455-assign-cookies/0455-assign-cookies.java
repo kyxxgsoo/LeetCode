@@ -12,16 +12,22 @@ class Solution {
         Arrays.sort(g);
         Arrays.sort(s);
 
+        int gIndex = 0;
         int sIndex = 0;
-        for (int i = 0; i < g.length; i++) {
+
+        while (gIndex < g.length) {
             if (sIndex < s.length) {
-                // 맞으면 다음아이
-                if (s[sIndex] >= g[i]) {
+                // 아이가 원하는 크기보다 쿠키의 크기가 클 때
+                if (s[sIndex] >= g[gIndex]) {
+                    // 다음 쿠키, 다음 아이, answer++
+                    gIndex++;
+                    sIndex++;
                     answer++;
                 } else {
-                    i--;
+                    sIndex++;
                 }
-                sIndex++;
+            } else {
+                break;
             }
         }
     }
